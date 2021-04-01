@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta charset ="UTF-8">
+	<title>Hello</title>
+     <script>  
+		window.onload = function(){ 
+			document.forms.le_from;
+		 var le_from = document.forms.le_from;
+		 var data = {};
+		 for(var i = 0; i<le_from.length;i++){
+		 	if(le_from[i].nam){
+		 		data[le_from[i].name] = le_from[i].value;
+		 	}
+		 }
+		 var strObj = JSON.stringify (data);
+
+		 var xhr = new XMLHttpRequest();
+		xhr.open('POST','/customers',true);
+		xhr.setRequestHeader('Contenent-Type','application/json; charset=UTF-8');
+		xhr.onreadystatechange = function(){
+		if (xhr.readyState == 4 && xhr.statue ==200)
+			 console.log("ok");
+			else{
+				console.error("ok")
+			}
+		}
+		 xhr.send(strObj);
+		 return false;
+		 }
+
+
+	</script>
+
+<body>
+	
+	<form name="le_from">
+	<input type="text" name="nom" value=""><br/>
+	<input type="text" name="prenom" value=""><br/>
+	<input type="text" name="email" value=""><br/>
+	<input type="button" value="envoyer">
+	</form>
+	
+</body>
+
+</html>
